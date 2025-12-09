@@ -1,10 +1,143 @@
 package DataBase;
-
-import java.io.*;
-import java.util.*;
+import AdminModule.*;
 import java.time.LocalTime;
-
+import java.util.*;
 public class Query {
+    ////////////////Admin Module////////////////
+    //////////////////start Users functions//////////////////////
+    public static void addUser(Users u) {
+        ArrayLists.users.add(u);
+    }
+
+    public static void updateUser(long id, String name, String pass, String role) {
+        for (Users u : ArrayLists.users) {
+            if (u.getID() == id) {
+                u.setName(name);
+                u.setPassword(pass);
+                u.setRole(role);
+            }
+        }
+    }
+
+    public static void deleteUser(long id) {
+        for (Users u : ArrayLists.users) {
+            if (u.getID() == id) {
+                ArrayLists.users.remove(u);
+                break;
+            }
+        }
+    }
+    //////////////////end Users functions//////////////////////
+    //////////////////start Employee functions/////////////////
+
+    public static void addEmployee(Employee e) 
+    {
+        ArrayLists.employee.add(e);
+    }
+
+    public static void updateEmployee(long id, String name, long typeid) {
+    for (Employee e : ArrayLists.employee) {
+        if (e.getID() == id) {
+            e.setName(name);
+            e.setType(typeid);
+            e.setTypeID(typeid);
+            break;
+        }   
+    }
+    }
+    public static void deleteEmployee(long id) {
+        for (Employee e : ArrayLists.employee) {
+            if (e.getID() == id) {
+                ArrayLists.employee.remove(e);
+                break;
+            }
+        }
+    }
+//     //////////////////end Employee functions/////////////////
+//     /////////////////start Projects functions///////////////
+    public static void addProject(Projects p) {
+        ArrayLists.projects.add(p);
+    }
+
+    public static void updateProject(long id, String title, long phaseid) {
+        for (Projects p : ArrayLists.projects) {
+            if (p.getID() == id) {
+                p.setTitle(title);
+                p.setPhaseID(phaseid);
+                p.setPhase(phaseid);
+                break;
+            }
+        }
+    }
+    public static void deleteProject(long id) {
+        for (Projects p : ArrayLists.projects) {
+            if (p.getID() == id) {
+                ArrayLists.projects.remove(p);
+                break;
+            }
+        }
+    }
+
+//     /////////////////end Projects functions///////////////
+//     /////////////////start TaskPhases functions///////////////
+    public static void addTaskPhase(TaskPhases tp) {
+        ArrayLists.taskphases.add(tp);
+    }
+
+    public static void updateTaskPhase(long id, String phase) {
+        for (TaskPhases tp : ArrayLists.taskphases) {
+            if (tp.getid() == id) {
+                tp.setPhase(phase);
+            }
+        }
+    }
+
+    public static void deleteTaskPhase(long id) {
+        for (TaskPhases tp : ArrayLists.taskphases) {
+            if (tp.getID() == id) {
+                ArrayLists.taskphases.remove(tp);
+                break;
+            }
+        }
+    }
+    public static String getPhaseNameById(long id) {
+        for (TaskPhases tp : ArrayLists.taskphases) {
+            if (tp.getid() == id) {
+                return tp.getphase();
+            }
+        }
+        return null;
+    }
+//     /////////////////end TaskPhases functions///////////////
+//     /////////////////start EmployeeType functions///////////  
+    public static void addEmployeeType(EmployeeType et) {
+        ArrayLists.employeetype.add(et);
+    }
+    public static void updateEmployeeType(long id, String name) {
+        for (EmployeeType et : ArrayLists.employeetype) {
+            if (et.getId() == id) {
+                et.setName(name);
+            }
+        }
+    }
+
+    public static String getTypeNameById(long id) {
+        for (EmployeeType et : ArrayLists.employeetype) {
+            if (et.getId() == id) {
+                return et.getname();
+            }
+        }
+        return null;
+    }
+    public static void deleteEmployeeType(long id) {
+        for (EmployeeType et : ArrayLists.employeetype) {
+            if (et.getID() == id) {
+                ArrayLists.employeetype.remove(et);
+                break;
+            }
+        }
+    }
+    /////////////////end Admin Module///////////
     private final String pathTimeCards = "../Resources/timecards.txt";
     private final String pathRequest = "../Resources/request.txt";
     private static int nextIdRequest = 1;
