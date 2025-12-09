@@ -45,6 +45,7 @@ public class Query {
         }   
     }
     }
+
     public static void deleteEmployee(long id) {
         for (Employee e : ArrayLists.employee) {
             if (e.getID() == id) {
@@ -52,6 +53,14 @@ public class Query {
                 break;
             }
         }
+    }
+    public static String getEmployeeNameById(long id) {
+        for (Employee e : ArrayLists.employee) {
+            if (e.getID() == id) {
+                return e.getName();
+            }
+        }
+        return null;
     }
 //     //////////////////end Employee functions/////////////////
 //     /////////////////start Projects functions///////////////
@@ -77,7 +86,14 @@ public class Query {
             }
         }
     }
-
+    public static String getProjectTitleById(long id) {
+        for (Projects p : ArrayLists.projects) {
+            if (p.getID() == id) {
+                return p.getTitle();
+            }
+        }
+        return null;
+    }
 //     /////////////////end Projects functions///////////////
 //     /////////////////start TaskPhases functions///////////////
     public static void addTaskPhase(TaskPhases tp) {
