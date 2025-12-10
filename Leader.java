@@ -7,7 +7,6 @@ import AdminModule.TaskPhases;
 import AdminModule.Users;
 import AdminModule.Employee;
 public class Leader extends Users {
-    QueryTask td;
     public Leader(String name, String password, String role) {
         super(name,password , role);
     }
@@ -68,4 +67,5 @@ public class Leader extends Users {
    public String changeTaskEstimationHours(int taskId,double newEstimationHours){
        return QueryTask.changeTaskEstimationHours(taskId, newEstimationHours);
    }
+
 }
