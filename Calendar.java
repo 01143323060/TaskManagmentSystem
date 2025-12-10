@@ -6,11 +6,14 @@ public class Calendar {
         this.tasks=tasks;
     }
     public void showAllEmployeesTasksAndPhases() {
-        
         for (TaskPage task : tasks) {
-            System.out.println("Employee: " + task.getAssignedEmp() 
-                + "     Task: " + task.getTitle() 
-                + "     Phase: " + task.getTaskPhase() );
+            if (task == null) continue; 
+            String empName = task.getAssignedEmp() != null ? task.getAssignedEmp().getName() : "Unassigned";
+            String title = task.getTitle() != null ? task.getTitle() : "No title";
+            String phase = task.getTaskPhase() != null ? task.getTaskPhase().toString() : "No phase";
+            System.out.println("Employee: " + empName 
+                + "     Task: " + title 
+                + "     Phase: " + phase );
         }
     }
 }
