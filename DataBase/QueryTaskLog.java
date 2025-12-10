@@ -65,8 +65,9 @@ public class QueryTaskLog {
     public static ArrayList<TaskLog> getLogsByTask(TaskPage task) {
         loadLogsIfEmpty();
         ArrayList<TaskLog> result = new ArrayList<>();
+        if (task == null) return result;
         for (TaskLog log : logs) {
-            if (log.getTask().equals(task)) {
+            if (log!= null &&log.getTask().getTaskId()==task.getTaskId()) {
                 result.add(log);
             }
         }
