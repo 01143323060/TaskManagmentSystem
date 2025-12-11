@@ -15,9 +15,25 @@ public class QueryTask {
            tasks = TaskPage.loadTasks("DataBase/Tasks.txt");
         }
     }
-
+    private static boolean isTaskValid(TaskPage t) {
+        return t.getTaskId() != 0 &&
+           t.getCode() != 0 &&     
+           t.getCreatorName() != null && 
+           t.getEstimationHours() != 0 &&
+           t.getPriority() != 0 && 
+           t.getTitle() != null &&
+           t.getDescription() != null &&
+           t.getAssignedEmp() != null &&
+           t.getTaskPhase() != null &&
+           t.getProject() != null &&
+           t.getStartDate() != null &&
+           t.getEndDate() != null;
+    }
     public static String addTask(TaskPage task){
         loadTasksIfEmpty();
+         if(!isTaskValid(task)){
+            return "Task details are incomplete";
+        }
         if(getTaskById(task.getTaskId())!=null){
             return "Task ID already exists";
         }
