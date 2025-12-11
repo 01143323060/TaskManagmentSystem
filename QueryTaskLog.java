@@ -14,8 +14,19 @@ public class QueryTaskLog {
     private static void save() {
         TaskLog.saveLogs(FILE_PATH, logs);
     }
+    private static boolean isLogValid(TaskLog l) {
+        return l.getActualTime()!=null&&
+                l.getAssignedEmployee()!=null&&
+                l.getFromTime()!=null&&
+                l.getToTime()!=null&&
+                l.getTaskLogId()!=0&&
+                l.getTask()!=null;
+    }
     public static String addLog(TaskLog log) {
         loadLogsIfEmpty();
+        if(!isLogValid(log)){
+            return "Task Log details are incomplete";
+        }
         if(getLogById(log.getTaskLogId())!=null){
             return "Task Log ID already exists";
         }
