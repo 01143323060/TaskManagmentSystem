@@ -6,18 +6,18 @@ import AdminModule.Employee;
 import static DataBase.FileManager.*;
 import DataBase.Query;
 public class TaskPage {
-    protected int taskId;
-    protected int code;
-    protected String title;
-    protected String desc;
-    protected Employee assignedEmp;
-    protected TaskPhases taskPhase;
-    protected Projects project;
-    protected int priority;
-    protected Employee creatorName;
-    protected Date startDate;
-    protected Date endDate;
-    protected double estimationHours;
+   private int taskId;
+    private int code;
+    private String title;
+    private String desc;
+    private Employee assignedEmp;
+    private TaskPhases taskPhase;
+    private Projects project;
+    private int priority;
+    private Employee creatorName;
+    private Date startDate;
+    private Date endDate;
+    private double estimationHours;
     private String evaluation="Not evaluated yet";
     TaskPage(){
         
