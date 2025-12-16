@@ -1,37 +1,62 @@
 package AdminModule;
+
+import DataBase.ArrayLists;
+
 public class Employee extends Users {
+
     private String hireDate;
-    private String type;
-    private long id;
-    private long typeid;
+    private long typeID;
     private static long empCounter = 0;
-    public static void setEmpCounter(long c) {
-        empCounter = c;
-    }
-    public Employee(String name, String password, String role, String hireDate, long typeid) {
-        super(name, password, role);
-        this.id = empCounter;
-        this.hireDate = hireDate;
-        this.type = DataBase.Query.getTypeNameById(typeid);
-        this.typeid = typeid;
-    }
-    public long getTypeID() {
-        return typeid;
-    }
-    public void setType(long idtype) {
-        this.type = DataBase.Query.getTypeNameById(idtype);
+
+    public Employee() {
+        super();
     }
 
-    public String getType() {
-        return this.type;
+    public Employee(String name, String password, String role, String hireDate, long typeID) {
+        super(name, password, role);
+        this.ID = empCounter++;
+        this.hireDate = hireDate;
+        this.typeID = typeID;
     }
-    public void setTypeID(long id) {
-        this.typeid = id;
+
+    // مهم جدًا لما بنحمل من الملف
+    public static void setEmpCounter(long counter) {
+        empCounter = counter;
     }
-    public long getID() {
-        return this.id;
-    }
+
+    // Getters & Setters
     public String getHireDate() {
         return hireDate;
     }
+
+    public void setHireDate(String hireDate) {
+        this.hireDate = hireDate;
+    }
+
+    public long getTypeID() {
+        return typeID;
+    }
+
+    public void setTypeID(long typeID) {
+        this.typeID = typeID;
+    }
+    public void setEmployeeName(String name){
+        this.name=name;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
+                ", role='" + role + '\'' +
+                ", hireDate='" + hireDate + '\'' +
+                '}';
+    }
+
+    public String getId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    public static Employee currentEmp;
+    public static Employee currentLeader;
 }
